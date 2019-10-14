@@ -1,4 +1,24 @@
 import * as ACTIONS from 'constants/action-types';
+import { getDataFromCookies } from 'utils/cookies';
+
+export const initAppStart = payload => {
+	return {
+		type: ACTIONS.INIT_APP_START
+	}
+};
+
+export const initAppSucceded = payload => {
+	return {
+		type: ACTIONS.INIT_APP_SUCCEDED,
+		payload
+	}
+};
+
+export const initAppFailed = payload => {
+	return {
+		type: ACTIONS.INIT_APP_FAILED
+	}
+};
 
 export const insertWord = payload => {
 	return {
@@ -13,3 +33,65 @@ export const deleteWord = payload => {
 		payload
 	}
 };
+
+export const startQuiz = payload => {
+	return {
+		type: ACTIONS.START_QUIZ,
+		payload
+	}
+};
+
+export const startQuizSucceded = payload => {
+	return {
+		type: ACTIONS.START_QUIZ_SUCCEDED,
+		payload
+	}
+};
+
+export const startQuizFailed = payload => {
+	return {
+		type: ACTIONS.START_QUIZ_FAILED
+	}
+};
+
+export const quizProceed = payload => {
+	return {
+		type: ACTIONS.QUIZ_PROCEED,
+		payload
+	};
+}
+
+
+export const initApp = () => {
+	return dispatch => {
+		dispatch(initAppStart());
+		try {
+			const data = getDataFromCookies();
+			dispatch(initAppSucceded(data));
+		} catch (err) {
+			console.log(err)
+			dispatch(initAppFailed());
+		}
+	}
+}
+
+export const takeQuiz = words => {
+	return dispatch => {
+		dispatch(startQuiz());
+
+		try {
+			let randomWords = [];
+			let initialWords = words.slice();
+
+			for (let i = 0; i < 3; i++) {
+				let randomIndex = Math.floor(Math.random() * initialWords.length);
+				randomWords.push(initialWords[randomIndex]);
+				initialWords.splice(randomIndex, 1);
+			}
+			dispatch(startQuizSucceded(randomWords));
+		} catch (err) {
+			dispatch(startQuizFailed());
+		}
+	}
+};
+

@@ -9,7 +9,6 @@ import { insertWord } from 'actions';
 const InsertForm = props => {
 	const wordInputRef = React.createRef();
 	const translationInputRef = React.createRef();
-
 	const [error, updateError] = useState();
 
 	const handleItemAdd = () => {
@@ -28,7 +27,11 @@ const InsertForm = props => {
 			return updateError('Word already exists in your list.');
 		}
 
+		wordInputRef.current.value = '';
+		translationInputRef.current.value = '';
+		wordInputRef.current.focus();
 		updateError('');
+
 		props.insertWord({
 			word: wordInput,
 			translation: translationInput
