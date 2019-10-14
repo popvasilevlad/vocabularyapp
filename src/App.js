@@ -1,16 +1,18 @@
 import React from 'react';
-import Card from 'ui-components/card';
-import Button from 'ui-components/button';
-import InsertForm from 'schema-components/insert-form';
-import VocabularyTable from 'schema-components/vocabulary-table';
+import InsertWordScreen from 'screens/insert-word-screen';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
     return (
-        <div>
-        	<InsertForm />
-        	<VocabularyTable />
-        	<Button text={'start test'}/>
-        </div>
+        <>
+            <Router>
+                <Switch>
+                    <Route path="/" exact component={InsertWordScreen} />
+                    <Route path="/quiz" component={() => <div>quiz</div>} />
+                    <Route component={() => <div>not found</div>} />
+                </Switch>
+            </Router>
+        </>
     )
 };
 

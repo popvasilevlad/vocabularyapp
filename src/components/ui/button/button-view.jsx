@@ -3,7 +3,8 @@ import StyledButton from './button-style';
 
 const Button = props => (
     <StyledButton
-        onClick={props.onClick}
+        onClick={() => props.onClick()}
+        centered={props.centered}
     >
         {props.text}
     </StyledButton>

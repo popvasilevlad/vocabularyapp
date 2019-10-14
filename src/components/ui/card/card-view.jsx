@@ -1,17 +1,10 @@
 import React from 'react';
-import StyledCard from './card-style';
+import Container from './card-style';
 
-const {
-	Container
-} = StyledCard;
-
-const Card = props => {
-	console.log(props)
-	return (
+const Card = props => (
 	<Container>
 		{props.children}
 	</Container>
-	);
-};
+);
 
 export default Card;

@@ -44,7 +44,9 @@ module.exports = {
             'assets': path.resolve(__dirname, 'src/assets/'),
             'store': path.resolve(__dirname, 'src/store/'),
             'reducers': path.resolve(__dirname, 'src/reducers/'),
-            'actions': path.resolve(__dirname, 'src/actions/')
+            'actions': path.resolve(__dirname, 'src/actions/'),
+            'utils': path.resolve(__dirname, 'src/utils/'),
+            'screens': path.resolve(__dirname, 'src/screens/')
         }
     },
     plugins: [

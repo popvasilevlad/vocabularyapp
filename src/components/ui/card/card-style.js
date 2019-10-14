@@ -14,14 +14,4 @@ const Container = styled.div`
 	flex-direction: column;
 `;
 
-// const HighlightText = styled.div`
-// 	font-weight: 900;
-// 	font-size: 14px;
-// 	color: ${primaryGray};
-// `;
-
-const StyledCard = {
-	Container
-};
-
-export default StyledCard;
+export default Container;

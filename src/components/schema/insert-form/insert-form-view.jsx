@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Input from 'ui-components/input'; 	
 import Button from 'ui-components/button'; 	
-import Card from 'ui-components/card';
-import InsertFormError from './insert-form-error';
-import { InsertFormWrapper } from './insert-form-style';
+import ErrorMessage from 'ui-components/error-message';
+import InsertFormWrapper from './insert-form-style';
 import { connect } from 'react-redux';
 import { insertWord } from 'actions';
 
@@ -29,6 +28,7 @@ const InsertForm = props => {
 			return updateError('Word already exists in your list.');
 		}
 
+		updateError('');
 		props.insertWord({
 			word: wordInput,
 			translation: translationInput
@@ -55,7 +55,7 @@ const InsertForm = props => {
 					onClick={() => handleItemAdd()}
 				/>
 			</InsertFormWrapper>
-			{error && <InsertFormError text={error}/>}
+			{error && <ErrorMessage text={error}/>}
 		</>
 	);
 };

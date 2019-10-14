@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { primaryBlue, fadedBlue } from 'constants/colors';
 
 const StyledButton = styled.button`
+    display: block;
     cursor: pointer;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
@@ -16,6 +17,7 @@ const StyledButton = styled.button`
     outline: 0;
     border: 0;
     background-color: ${fadedBlue};
+    margin: ${props => props.centered ? '0 auto': null};
     &:hover {
         background-color: ${primaryBlue};
     }
