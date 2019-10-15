@@ -13,7 +13,7 @@ const VocabularyScreen = props => {
     const [goTo, setRedirect] = useState('');
 
     const handleQuizStart = () => {
-        if (props.words.length < 3) {
+        if (props.words.length < 20) {
             return setError('You have to add 20 words to the vocabulary before starting a test')
         }  else {
             props.takeQuiz(props.words);
