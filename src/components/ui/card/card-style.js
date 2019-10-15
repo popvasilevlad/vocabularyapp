@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { whiteGray, fadedGray, primaryGray } from 'constants/colors';
+import { whiteGray, fadedGray } from 'constants/colors';
 
 const Container = styled.div`
 	margin: 20px 0;
