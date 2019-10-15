@@ -121,7 +121,7 @@ export const takeQuiz = words => {
 			let randomWords = [];
 			let initialWords = words.slice();
 
-			for (let i = 0; i < 3; i++) {
+			for (let i = 0; i < 20; i++) {
 				let randomIndex = Math.floor(Math.random() * initialWords.length);
 				randomWords.push(initialWords[randomIndex]);
 				initialWords.splice(randomIndex, 1);
