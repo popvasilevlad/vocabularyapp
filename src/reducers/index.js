@@ -6,8 +6,8 @@ const initialState = {
 	loading: false,
 	quizWords: [],
 	quizStep: 0,
-	quizProgress: 0,
-	appInitialized: false
+	appInitialized: false,
+	resultPercent: ''
 };
 
 function rootReducer(state = initialState, action) {
@@ -70,8 +70,31 @@ function rootReducer(state = initialState, action) {
 				...state,
 				quizWords: [...action.payload],
 				quizStep: state.quizStep + 1,
-				generalError: true,
 				loading: false
+			};
+
+		case ACTIONS.QUIZ_SUBMIT_START:
+			return {
+				...state,
+				loading: true
+			};
+
+		case ACTIONS.QUIZ_SUBMIT_SUCCEDED:
+			return {
+				...state,
+				loading: false,
+				quizWords: [...action.payload.quizWords],
+				quizStep: 0,
+				resultPercent: action.payload.resultPercent
+			};
+
+		case ACTIONS.RESET_QUIZ:
+			return {
+				...state,
+				loading: false,
+				quizWords: [].slice(),
+				quizStep: 0,
+				resultPercent: ''
 			};
 
 		default: 

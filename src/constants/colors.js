@@ -5,3 +5,4 @@ export const primaryGray = 'rgba(0,0,0,0.7)';
 export const fadedGray = '#a0a0a0';
 export const whiteGray = 'rgba(0,0,0,0.1)';
 export const fadedRed = '#d46f6f';
+export const primaryGreen = '#2cbf29';

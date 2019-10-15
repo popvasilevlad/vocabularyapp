@@ -4,11 +4,11 @@ import ErrorMessage from 'ui-components/error-message';
 import Spiner from 'ui-components/spinner';
 import InsertForm from 'schema-components/insert-form';
 import VocabularyTable from 'schema-components/vocabulary-table';
-import { takeQuiz } from 'actions';
+import { takeQuiz, init } from 'actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-const InsertWordScreen = props => {
+const VocabularyScreen = props => {
     const [error, setError] = useState('');
     const [goTo, setRedirect] = useState('');
 
@@ -24,6 +24,7 @@ const InsertWordScreen = props => {
 
     return (
         <>
+            { !!props.quizStep && <Redirect to={'quiz'} />}
             <InsertForm />
             <VocabularyTable />
             { !!error && <ErrorMessage text={error} /> }
@@ -43,7 +44,8 @@ const InsertWordScreen = props => {
 const mapStateToProps = state => {
     return {
         words: state.words,
-        loading: state.loading
+        loading: state.loading,
+        quizStep: state.quizStep
     }
 };
 
@@ -53,4 +55,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(InsertWordScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(VocabularyScreen);

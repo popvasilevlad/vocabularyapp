@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from 'ui-components/spinner';
-import InsertWordScreen from 'screens/insert-word-screen';
+import Vocabulary from 'screens/vocabulary-screen';
 import QuizScreen from 'screens/quiz-screen';
 import QuizResults from 'screens/quiz-results';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
@@ -27,9 +27,9 @@ class App extends Component {
                 {this.props.loading && <Spinner />}
                 <Router>
                     <Switch>
-                        <Route path="/" exact component={InsertWordScreen} />
-                        <Route path="/quiz" component={QuizScreen} />
-                        <Route path="/results" component={QuizResults} />
+                        <Route path="/quiz" exact component={QuizScreen} />
+                        <Route path="/results" exact component={QuizResults} />
+                        <Route path="/" exact component={Vocabulary} />
                         <Route component={() => <div>not found</div>} />
                     </Switch>
                 </Router>

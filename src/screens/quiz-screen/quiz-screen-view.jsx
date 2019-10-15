@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { quizProceed } from 'actions';
+import { quizProceedWord } from 'actions';
 import ProgressBar from 'ui-components/progress-bar';
 import Card from 'ui-components/card';
 import CenteringWrapper from 'ui-components/centering-wrapper';
@@ -10,12 +10,12 @@ import Button from 'ui-components/button';
 import ErrorMessage from 'ui-components/error-message';
 
 const QuizScreen = props => {
-	if (!props.quizWords.length) {
-		return <Redirect to='/' />
+	if (props.resultPercent !== '') {
+		return <Redirect to='results' />
 	};
 
-	if (props.quizStep > props.quizWords.length) {
-		return <Redirect to='results' />
+	if (!props.quizStep) {
+		return <Redirect to='/' />
 	};
 
 	const [error, updateError] = useState();
@@ -35,8 +35,8 @@ const QuizScreen = props => {
 		}
 
 		const newQuizWords = props.quizWords.slice();
-		newQuizWords[props.quizStep - 1].translation = answerInput;
-		props.quizProceed(newQuizWords);
+		newQuizWords[props.quizStep - 1].answeredTranslation = answerInput;
+		props.quizProceedWord(newQuizWords, props.quizStep);
 	};
 
 	return (
@@ -76,13 +76,14 @@ const QuizScreen = props => {
 const mapStateToProps = state => {
 	return {
 		quizStep: state.quizStep,
-		quizWords: state.quizWords
+		quizWords: state.quizWords,
+		resultPercent: state.resultPercent
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		quizProceed: entry => dispatch(quizProceed(entry))
+		quizProceedWord: (entry, quizStep) => dispatch(quizProceedWord(entry, quizStep))
 	}
 };
 

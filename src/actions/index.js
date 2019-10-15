@@ -59,8 +59,46 @@ export const quizProceed = payload => {
 		type: ACTIONS.QUIZ_PROCEED,
 		payload
 	};
-}
+};
 
+export const quizSubmitStart = payload => {
+	return {
+		type: ACTIONS.QUIZ_SUBMIT_START,
+		payload
+	};
+};
+
+export const quizSubmitSucceded = payload => {
+	return {
+		type: ACTIONS.QUIZ_SUBMIT_SUCCEDED,
+		payload
+	};
+};
+
+export const resetQuiz = payload => {
+	return {
+		type: ACTIONS.RESET_QUIZ
+	};
+};
+
+export const quizProceedWord = (quizWords, step) => {
+	return dispatch => {
+		if (step === quizWords.length) {
+			dispatch(quizSubmitStart(quizWords));
+
+			const resultScore = quizWords.reduce((count, current) => {
+				return current.translation === current.answeredTranslation ? ++count : count
+			}, 0);
+			const resultPercent = Math.floor(resultScore / quizWords.length * 100);
+			dispatch(quizSubmitSucceded({
+				quizWords,
+				resultPercent
+			}))
+		} else {
+			dispatch(quizProceed(quizWords));
+		}
+	}
+}
 
 export const initApp = () => {
 	return dispatch => {

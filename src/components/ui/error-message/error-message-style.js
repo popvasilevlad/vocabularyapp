@@ -6,6 +6,7 @@ const ErrorWrapper = styled.div`
 	text-align: center;
 	font-size: 12px;
 	color: ${fadedRed};
+	font-weight: 600;
 `;
 
 export default ErrorWrapper;
