@@ -1,25 +1,28 @@
 {
+  "homepage": "https://popvasilevlad.github.io/vocabularyapp",
   "name": "reviews-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot --port 3001",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/popvasilevlad/reviews-app.git"
+    "url": "git+https://popvasilevlad.github.io/vocabularyapp.git"
   },
   "author": "Vlad Pop",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/popvasilevlad/reviews-app/issues"
+    "url": "https://popvasilevlad.github.io/vocabularyapp/issues"
   },
-  "homepage": "https://github.com/popvasilevlad/reviews-app#readme",
   "devDependencies": {
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "react-svg-loader": "^3.0.3",
     "style-loader": "^1.0.0",
