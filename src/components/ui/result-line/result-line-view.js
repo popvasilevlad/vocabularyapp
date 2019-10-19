@@ -18,8 +18,8 @@ const ResultLine = props => {
 	return (
 		<ResultLineWrapper isCorrect={isCorrect}>
 			<div>{word}</div>
-			<div>{answeredTranslation}</div>
 			<div>{translation}</div>
+			<div>{answeredTranslation}</div>
 		</ResultLineWrapper>
 	);
 }
